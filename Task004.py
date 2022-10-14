@@ -4,12 +4,7 @@ import os
 from random import randint
 clear=lambda:os.system('cls')
 clear()
-
-def create_coefficients(n):
-    coef = [randint(0, 100) for i in range(n + 1)]
-    return coef
-
-def create_polymom(coeffic):
+def create_formula(coeffic):
        k = len(coeffic)-1
        polynom = ' '
        for i in range(0,len(coeffic)):
@@ -23,17 +18,15 @@ def create_polymom(coeffic):
        polynom+=' =0'
        return polynom
 
+def polymons(k, file_name):
+    coeffic = [randint(0, 100) for i in range(k + 1)]
+    res = create_formula(coeffic)
+    with open(file_name,'w',encoding='utf-8') as f:
+       f.write(' '.join([str(i) for i in coeffic[::-1]]) + '\n')
+       f.write(res)
 
-k = int(input('Введите натуральную степень k '))
-coefficients1 = create_coefficients(k)
-polynom1 = create_polymom(coefficients1)
-print(polynom1)
-coefficients2 = create_coefficients(k)
-polynom2 = create_polymom(coefficients2)
-print(polynom2)
+polymons(3,'file1.txt')
+polymons(3,'file2.txt')
 
-with open ('file1.txt','w') as data:
-       data.write(polynom1)
-with open ('file2.txt','w') as data:
-       data.write(polynom2)
+
 
