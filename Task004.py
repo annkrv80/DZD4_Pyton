@@ -22,7 +22,7 @@ def polymons(k, file_name):
     coeffic = [randint(0, 100) for i in range(k + 1)]
     res = create_formula(coeffic)
     with open(file_name,'w',encoding='utf-8') as f:
-       f.write(' '.join([str(i) for i in coeffic[::-1]]) + '\n')
+       f.write(' '.join([str(i) for i in coeffic[::-1]])+'\n')
        f.write(res)
 
 polymons(3,'file1.txt')
